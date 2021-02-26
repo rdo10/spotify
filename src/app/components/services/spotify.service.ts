@@ -73,9 +73,8 @@ export class SpotifyService {
 
   }
 
-
   getCanciones(v: string) {
-    return this.getInfo(`search?q=${v}&type=track&limit=30&offset=0`).pipe(map((data: any) => data.artists.items));
+    return this.getInfo(`search?q=${v}&type=track&limit=15`).pipe(map((data: any) => data.tracks.items));
   }
 
 
