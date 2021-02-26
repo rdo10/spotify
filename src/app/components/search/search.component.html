@@ -2,9 +2,20 @@
   <div class="col col-md-5 pal-s">
 
     <div class="input-group mb-3">
-      <input #search1 type="text" (keyup.enter)="search(search1.value)" class="form-control" aria-label="Buscar Artistas..." aria-describedby="Buscar">
+      <input #search1 type="text" (keyup.enter)="BuscarArtista(search1.value)" class="form-control" placeholder="Buscar artista" aria-label="Buscar Artistas..." aria-describedby="Buscar">
       <div class="input-group-append">
-        <button (click)="search(search1.value)"  class="btn btn-dark" type="button" id="button-addon2">Buscar...</button>
+        <button (click)="BuscarArtista(search1.value)" class="btn btn-dark" type="button" id="button-addon2">Buscar</button>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="col col-md-5 pal-s">
+
+    <div class="input-group mb-3">
+      <input #search2 type="text" (keyup.enter)="BuscarCancion(search2.value)" class="form-control" placeholder="Buscar cancion">
+      <div class="input-group-append">
+        <button class="btn btn-dark" type="button" (click)="BuscarCancion(search2.value)">Buscar</button>
         
       </div>
     </div>

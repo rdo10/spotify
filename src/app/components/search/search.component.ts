@@ -17,7 +17,7 @@ export class SearchComponent {
 
   constructor(private _spotifyService: SpotifyService) { }
 
-  search(v: string){
+  BuscarArtista(v: string) {
 
     clearTimeout(this._timeWaitSearch);
 
@@ -37,20 +37,32 @@ export class SearchComponent {
 
       });
 
-      this._spotifyService.getCanciones(v).subscribe((data:any)=>{
-            this.searchSongs = data;
-            this.loading = false;
-
-      },error =>{
-          console.log(error)
-      })
-
 
     }, 500);
 
   }
 
+   BuscarCancion(search2:string){
+    clearTimeout(this._timeWaitSearch);
+
+    this._timeWaitSearch = setTimeout(() => {
+
+      this.loading = true;
+
+      this._spotifyService.getCanciones(search2).subscribe((data: any) => {
+
+        this.searchSongs = data;
+        this.loading = false;
 
 
+      }, error => {
+
+        error.status == 401 || error.status == 400 && (this._spotifyService.tokenRefreshURL());
+
+      });
+
+
+    }, 500);
+   }
 
 }
